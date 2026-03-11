@@ -23,7 +23,9 @@ const filterSwatchData = (swatches, pageSlug) => {
       const combination = {
         'hex': e.hex,
         'name': e.name,
-        'slug': e.slug
+        'slug': e.slug,
+        'rgb': e.rgb,
+        'cmyk': e.cmyk
       }
       colorList.push(combination)
     }

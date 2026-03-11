@@ -1,8 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 import { comboData, SwatchHeader, CopyHex } from './../components'
-import { flexRow, SwatchLink, ComboTitle, ComboHex, ButtonLink, media } from './../styles'
-import { spacing, shared } from './../styles/theme.json'
+import { flexRow, SwatchLink, ComboTitle, ComboHex, ButtonLink, media, microType } from './../styles'
+import { spacing, shared, fonts } from './../styles/theme.json'
 
 const Swatch = (props) =>
   <React.Fragment>
@@ -32,6 +32,11 @@ const Swatch = (props) =>
           <ColorBar key={`${props.slug}-${i}`} style={{ backgroundColor: color.hex }}>
             <SwatchLink to={`/swatch/${color.slug}`} hex={color.hex}>
               <p className={'name'}>{color.name}</p>
+              <ColorValues className={'color-values'}>
+                <span>{color.hex}</span>
+                <span>{color.rgb}</span>
+                <span>{color.cmyk}</span>
+              </ColorValues>
             </SwatchLink>
           </ColorBar>
         )}
@@ -76,6 +81,23 @@ const ComboWrapper = styled.div`
   z-index: 0;
 `
 
+const ColorValues = styled.div`
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  right: ${spacing.single_pad};
+  top: calc(${spacing.single_pad} + ${shared.nav_height});
+  opacity: 0;
+  transition: opacity 300ms ease;
+  will-change: opacity;
+  span {
+    ${microType};
+    font-family: ${fonts.sans};
+    display: block;
+    padding-bottom: 0.4rem;
+  }
+`
+
 const ColorBar = styled.div`
   position: relative;
   width: 100%;
@@ -100,6 +122,9 @@ const ColorBar = styled.div`
   }
   &:hover {
     p {
+      opacity: 1;
+    }
+    .color-values {
       opacity: 1;
     }
   }

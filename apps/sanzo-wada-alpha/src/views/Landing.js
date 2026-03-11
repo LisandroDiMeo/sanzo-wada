@@ -1,6 +1,7 @@
 import React, { Fragment, Component } from 'react'
 import styled from 'styled-components'
 import { withStore, ColorSwatches, ColorTable, Title } from './../components'
+import HelpModal from './../components/HelpModal'
 import { flexRow, StyledButton, media, ButtonHref, ButtonLink, flexColumn } from './../styles'
 import { colors, spacing, shared, breakpoints } from './../styles/theme.json'
 
@@ -8,13 +9,16 @@ class Landing extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      table: false 
+      table: false,
+      helpOpen: false
     }
   }
 
   _setTable() { this.setState({ table: true })}
 
   _setSwatch() {this.setState({ table: false })}
+
+  _toggleHelp() { this.setState({ helpOpen: !this.state.helpOpen })}
 
   render() {
     return (
@@ -34,12 +38,16 @@ class Landing extends Component {
             <ButtonLink to={'/about'}>
               <span>ABOUT</span>
             </ButtonLink>
+            <StyledButton onClick={() => this._toggleHelp()}>
+              <span>HELP</span>
+            </StyledButton>
           </ButtonWrapper>
         </StyleMenu>
-        {(this.state.table) 
+        {(this.state.table)
           ? <ColorTable colorList={this.props.color_data.color_list_flat} breakPoint={this.props.resize_state.window_width}/>
           : <ColorSwatches colorList={this.props.color_data.color_list}/>
         }
+        {this.state.helpOpen && <HelpModal onClose={() => this._toggleHelp()} />}
       </Fragment>
     )
   }
