@@ -19,7 +19,8 @@ mixin(_, {
 })
 
 // ROUTER & REDUX
-const history = createBrowserHistory()
+const basename = process.env.PUBLIC_URL ? process.env.PUBLIC_URL.replace(/\/$/, '') : ''
+const history = createBrowserHistory({ basename })
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 const store = createStore(
@@ -41,7 +42,7 @@ const resizeHandler = () => {
 WebFont.load({
   custom: {
     families: ['fff-regular', 'fff-italic'],
-    urls: ['/assets/fonts.css']
+    urls: [`${process.env.PUBLIC_URL}assets/fonts.css`]
   },
   active: () => {
     store.dispatch(fontsLoaded(true))

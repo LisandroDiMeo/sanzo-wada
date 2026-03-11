@@ -6,10 +6,12 @@
   "repository": "https://github.com/dblodorn/sanzo-wada",
   "author": "Dain Blodorn Kim",
   "license": "MIT",
+  "homepage": "https://lisandrodimeo.github.io/sanzo-wada/",
   "private": true,
   "scripts": {
     "dev": "webpack-dev-server --mode development --open",
-    "build": "webpack --mode production"
+    "build": "webpack --mode production",
+    "build:gh-pages": "PUBLIC_URL=/sanzo-wada/ webpack --mode production"
   },
   "babel": {
     "presets": [

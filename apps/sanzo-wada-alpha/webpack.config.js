@@ -5,6 +5,9 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
+const PUBLIC_URL = process.env.PUBLIC_URL || '/'
+const publicPath = PUBLIC_URL.endsWith('/') ? PUBLIC_URL : PUBLIC_URL + '/'
+
 module.exports = {
   module: {
     rules: [
@@ -20,14 +23,18 @@ module.exports = {
   },
   output: {
     filename: '[name].[hash].js',
-    publicPath: '/'
+    publicPath: publicPath
   },
   plugins: [
+    new webpack.DefinePlugin({
+      'process.env.PUBLIC_URL': JSON.stringify(publicPath)
+    }),
     new HtmlWebpackPlugin({
       template: './index.html'
     }),
     new CopyWebpackPlugin([
-      { from: './assets/**/*', to: './' }
+      { from: './assets/**/*', to: './' },
+      { from: './404.html', to: './404.html' }
     ]),
     new webpack.HotModuleReplacementPlugin(),
     new CleanWebpackPlugin(

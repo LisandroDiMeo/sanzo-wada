@@ -28,7 +28,7 @@ class Landing extends Component {
             <StyledButton onClick={e => this._setTable(e)} className={(this.state.table) && 'active'}>
               <span>{(this.props.resize_state.window_width >= breakpoints.desktop) ? `List View` : `List`}</span>
             </StyledButton>
-            <ButtonHref href="/assets/colors.json">
+            <ButtonHref href={`${process.env.PUBLIC_URL}assets/colors.json`}>
               <span>JSON {(this.props.resize_state.window_width >= breakpoints.desktop) && `API`}</span>
             </ButtonHref>
             <ButtonLink to={'/about'}>
