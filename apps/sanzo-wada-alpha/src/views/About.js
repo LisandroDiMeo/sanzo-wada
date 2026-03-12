@@ -46,19 +46,7 @@ export default () =>
           </p>
           <p>
             This project is based on the original open-source repository by{' '}
-            <a href="https://github.com/dblodorn/sanzo-wada">Dain Blodorn Kim</a>,
-            with biography research by <a href="http://ianlynam.com/about/">Ian Lynam</a>.
-          </p>
-          <h3>Original Project Contributors</h3>
-          <p>
-            <a href="https://github.com/paolotremadio">Paolo Tremadio</a>,{' '}
-            <a href="https://github.com/mattdesl">Matt DesLauriers</a>,{' '}
-            <a href="https://github.com/fand">Takayosi Amagi</a>
-          </p>
-          <h3>Related Projects</h3>
-          <p>
-            <a href="https://github.com/jmaasch/sanzo">R Package for Data Visualization</a> by{' '}
-            <a href="https://github.com/jmaasch">Jacqueline Maasch</a>
+            <a href="https://github.com/dblodorn/sanzo-wada">Dain Blodorn Kim</a>.
           </p>
         </AboutCopy>
       </CreditsWrapper>
