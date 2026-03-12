@@ -34,7 +34,9 @@ const Swatch = (props) => {
         </ColorInfo>
         <ComboHeaderRow hex={props.hex}>
           <ComboHeader><span>Combinations:</span></ComboHeader>
-          <HelpButton hex={props.hex} onClick={() => setHelpOpen(true)}>?</HelpButton>
+        </ComboHeaderRow>
+        <ComboHeaderRow>
+          <HelpButton hex={props.hex} onClick={() => setHelpOpen(true)}>How it works?</HelpButton>
         </ComboHeaderRow>
         <ComboList>
           {props.combinations.map((combo, i) =>
@@ -128,16 +130,13 @@ const ComboHeader = styled.h2`
 
 const HelpButton = styled.button`
   ${buttonInit};
-  width: 2.4rem;
-  height: 2.4rem;
-  min-width: 2.4rem;
-  border-radius: 50%;
+  ${microType};
+  border-radius: 1.5rem;
   border: 2px solid ${props =>
     chroma.contrast(props.hex, colors.grey) > 2 ? colors.grey : colors.black} !important;
-  font-family: ${fonts.sans};
-  font-size: ${fonts.sizes.sm};
   font-weight: 700;
-  display: flex;
+  padding: 0.4rem 1.2rem;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
   opacity: 0.7;
